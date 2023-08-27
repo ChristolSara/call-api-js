@@ -1,0 +1,24 @@
+
+function getJSONData(url)
+{
+    return new Promise(function(resolve, reject) {
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                resolve(data);
+            })
+            .catch(function(error) {
+                reject(error);
+            });
+    });
+}
+
+
+const url = 'https://jsonplaceholder.typicode.com/posts';
+
+getJSONData(url)
+    .then(function(data) {
+        console.log(data);
+    })
